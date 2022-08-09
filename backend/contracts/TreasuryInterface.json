@@ -1,0 +1,988 @@
+{
+  "contractName": "TreasuryInterface",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.4.26+commit.4563c3fc\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/TreasuryInterface.sol\":\"TreasuryInterface\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Accessible.sol\":{\"keccak256\":\"0x91a89ba7ab3c40e2a8c6c403ca7ba9e4f43311885220acc9f393686381c191b3\",\"urls\":[\"bzzr://36a909b6313370fa0ce1aa4257ef7786a7b9e9608e54d2098204585f318aba2f\"]},\"project:/contracts/ProposalInterface.sol\":{\"keccak256\":\"0x4cb8ce1ec1e34971f5628324bd824e579a1f7cfb26f02a47b2e8078f07ed3f07\",\"urls\":[\"bzzr://bf3d4321a7d9de84bd71822a658c6bd62f2f56783ab4cf6bd1f4ada9b7db6401\"]},\"project:/contracts/TimedLib.sol\":{\"keccak256\":\"0x6619dc0c54bdc7f5291c2ec5968b8f46d36dedb6bdb2896a13690282a67b45f4\",\"urls\":[\"bzzr://09d79ee8e0ece24ef73e56c97679ed7a83755b212d6fae26ae784663322a199a\"]},\"project:/contracts/TreasuryInterface.sol\":{\"keccak256\":\"0xa237454eabf0a15c894c71ba21a31de2e1f17b12f9bacf0dece63ff33ff450b7\",\"urls\":[\"bzzr://f6da7021606968fc369cb5fd6e3c119f5c2da0169b8d9e0ce09d9992dfc3e16a\"]},\"project:/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0xa1c5e1d9ebbf654d332ca8e7a5c04a6a6a9d142eeaab3b988c2c909c81a62bef\",\"urls\":[\"bzzr://d062fb4a1b6de1f036ee0e73364a2532c4757eb68e95dd8c5cbb2d17b8732c6a\"]},\"project:/node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x84c7090c27cf3657b73d9e26b6b316975fa0bd233b8169f254de0c3b3acfaefc\",\"urls\":[\"bzzr://b983355647976c1daa5de581a1b6a41be9c5adc17cce257b8679649db78f8a11\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a72305820e104c16c03530892c109b035e77d8cfd315a68ee28e32b4fbdd411304cec74020029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a72305820e104c16c03530892c109b035e77d8cfd315a68ee28e32b4fbdd411304cec74020029",
+  "sourceMap": "450:382:38:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;450:382:38;;;;;;;",
+  "deployedSourceMap": "450:382:38:-;;;;;",
+  "source": "/**\n * @title The contract that incorporates the logic of the wallet (for internal usage)\n * @notice This contract is used when proposals are stored as structs but not created as individual contract by the factory.\n */\npragma solidity ^0.4.21;\n\n// import \"../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol\"; \n// import \"./Wallet.sol\";\n// import \"./ExternalWallet.sol\";\n// import \"./Accessible.sol\";\nimport \"./ProposalInterface.sol\";\n\ncontract TreasuryInterface {\n    \n    ProposalInterface proposalGate;\n\n    modifier uponProposalSuccess(bytes32 _proposalID) {\n        require(proposalGate.getProposalFinalResult(_proposalID));\n        _;\n    }\n\n    modifier expectProposalType(bytes32 _proposalID, bool _isGAProposal) {\n        require(proposalGate.getProposalType(_proposalID) == _isGAProposal);\n        _;\n    }\n}",
+  "sourcePath": "C:\\Users\\vasil\\OneDrive\\Documents\\02_e-swissolar\\02_prj\\Truffle-React-ReFiDAO-Sandbox\\backend\\contracts\\TreasuryInterface.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/TreasuryInterface.sol",
+    "exportedSymbols": {
+      "TreasuryInterface": [
+        5656
+      ]
+    },
+    "id": 5657,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5622,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".21"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "219:24:38"
+      },
+      {
+        "absolutePath": "project:/contracts/ProposalInterface.sol",
+        "file": "./ProposalInterface.sol",
+        "id": 5623,
+        "nodeType": "ImportDirective",
+        "scope": 5657,
+        "sourceUnit": 3426,
+        "src": "415:33:38",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 5656,
+        "linearizedBaseContracts": [
+          5656
+        ],
+        "name": "TreasuryInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 5625,
+            "name": "proposalGate",
+            "nodeType": "VariableDeclaration",
+            "scope": 5656,
+            "src": "488:30:38",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ProposalInterface_$3425",
+              "typeString": "contract ProposalInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 5624,
+              "name": "ProposalInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3425,
+              "src": "488:17:38",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ProposalInterface_$3425",
+                "typeString": "contract ProposalInterface"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5637,
+              "nodeType": "Block",
+              "src": "575:85:38",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 5632,
+                            "name": "_proposalID",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5627,
+                            "src": "629:11:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes32",
+                              "typeString": "bytes32"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes32",
+                              "typeString": "bytes32"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5630,
+                            "name": "proposalGate",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5625,
+                            "src": "593:12:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_ProposalInterface_$3425",
+                              "typeString": "contract ProposalInterface"
+                            }
+                          },
+                          "id": 5631,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "getProposalFinalResult",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 3321,
+                          "src": "593:35:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_bool_$",
+                            "typeString": "function (bytes32) view external returns (bool)"
+                          }
+                        },
+                        "id": 5633,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "593:48:38",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 5629,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        6822,
+                        6823
+                      ],
+                      "referencedDeclaration": 6822,
+                      "src": "585:7:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 5634,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "585:57:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5635,
+                  "nodeType": "ExpressionStatement",
+                  "src": "585:57:38"
+                },
+                {
+                  "id": 5636,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "652:1:38"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5638,
+            "name": "uponProposalSuccess",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 5628,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5627,
+                  "name": "_proposalID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5638,
+                  "src": "554:19:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5626,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "554:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "553:21:38"
+            },
+            "src": "525:135:38",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5654,
+              "nodeType": "Block",
+              "src": "735:95:38",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 5650,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 5647,
+                              "name": "_proposalID",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5640,
+                              "src": "782:11:38",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 5645,
+                              "name": "proposalGate",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5625,
+                              "src": "753:12:38",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_ProposalInterface_$3425",
+                                "typeString": "contract ProposalInterface"
+                              }
+                            },
+                            "id": 5646,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "getProposalType",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 3314,
+                            "src": "753:28:38",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_bool_$",
+                              "typeString": "function (bytes32) view external returns (bool)"
+                            }
+                          },
+                          "id": 5648,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "753:41:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 5649,
+                          "name": "_isGAProposal",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 5642,
+                          "src": "798:13:38",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "src": "753:58:38",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 5644,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        6822,
+                        6823
+                      ],
+                      "referencedDeclaration": 6822,
+                      "src": "745:7:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 5651,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "745:67:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5652,
+                  "nodeType": "ExpressionStatement",
+                  "src": "745:67:38"
+                },
+                {
+                  "id": 5653,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "822:1:38"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 5655,
+            "name": "expectProposalType",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 5643,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5640,
+                  "name": "_proposalID",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5655,
+                  "src": "694:19:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5639,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "694:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5642,
+                  "name": "_isGAProposal",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5655,
+                  "src": "715:18:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5641,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "715:4:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "693:41:38"
+            },
+            "src": "666:164:38",
+            "visibility": "internal"
+          }
+        ],
+        "scope": 5657,
+        "src": "450:382:38"
+      }
+    ],
+    "src": "219:613:38"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/TreasuryInterface.sol",
+      "exportedSymbols": {
+        "TreasuryInterface": [
+          5656
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".21"
+          ]
+        },
+        "id": 5622,
+        "name": "PragmaDirective",
+        "src": "219:24:38"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3426,
+          "absolutePath": "project:/contracts/ProposalInterface.sol",
+          "file": "./ProposalInterface.sol",
+          "scope": 5657,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 5623,
+        "name": "ImportDirective",
+        "src": "415:33:38"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            5656
+          ],
+          "name": "TreasuryInterface",
+          "scope": 5657
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "proposalGate",
+              "scope": 5656,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract ProposalInterface",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "ProposalInterface",
+                  "referencedDeclaration": 3425,
+                  "type": "contract ProposalInterface"
+                },
+                "id": 5624,
+                "name": "UserDefinedTypeName",
+                "src": "488:17:38"
+              }
+            ],
+            "id": 5625,
+            "name": "VariableDeclaration",
+            "src": "488:30:38"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "name": "uponProposalSuccess",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proposalID",
+                      "scope": 5638,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 5626,
+                        "name": "ElementaryTypeName",
+                        "src": "554:7:38"
+                      }
+                    ],
+                    "id": 5627,
+                    "name": "VariableDeclaration",
+                    "src": "554:19:38"
+                  }
+                ],
+                "id": 5628,
+                "name": "ParameterList",
+                "src": "553:21:38"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                6822,
+                                6823
+                              ],
+                              "referencedDeclaration": 6822,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 5629,
+                            "name": "Identifier",
+                            "src": "585:7:38"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes32",
+                                      "typeString": "bytes32"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "getProposalFinalResult",
+                                  "referencedDeclaration": 3321,
+                                  "type": "function (bytes32) view external returns (bool)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 5625,
+                                      "type": "contract ProposalInterface",
+                                      "value": "proposalGate"
+                                    },
+                                    "id": 5630,
+                                    "name": "Identifier",
+                                    "src": "593:12:38"
+                                  }
+                                ],
+                                "id": 5631,
+                                "name": "MemberAccess",
+                                "src": "593:35:38"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 5627,
+                                  "type": "bytes32",
+                                  "value": "_proposalID"
+                                },
+                                "id": 5632,
+                                "name": "Identifier",
+                                "src": "629:11:38"
+                              }
+                            ],
+                            "id": 5633,
+                            "name": "FunctionCall",
+                            "src": "593:48:38"
+                          }
+                        ],
+                        "id": 5634,
+                        "name": "FunctionCall",
+                        "src": "585:57:38"
+                      }
+                    ],
+                    "id": 5635,
+                    "name": "ExpressionStatement",
+                    "src": "585:57:38"
+                  },
+                  {
+                    "id": 5636,
+                    "name": "PlaceholderStatement",
+                    "src": "652:1:38"
+                  }
+                ],
+                "id": 5637,
+                "name": "Block",
+                "src": "575:85:38"
+              }
+            ],
+            "id": 5638,
+            "name": "ModifierDefinition",
+            "src": "525:135:38"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "name": "expectProposalType",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proposalID",
+                      "scope": 5655,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 5639,
+                        "name": "ElementaryTypeName",
+                        "src": "694:7:38"
+                      }
+                    ],
+                    "id": 5640,
+                    "name": "VariableDeclaration",
+                    "src": "694:19:38"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_isGAProposal",
+                      "scope": 5655,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 5641,
+                        "name": "ElementaryTypeName",
+                        "src": "715:4:38"
+                      }
+                    ],
+                    "id": 5642,
+                    "name": "VariableDeclaration",
+                    "src": "715:18:38"
+                  }
+                ],
+                "id": 5643,
+                "name": "ParameterList",
+                "src": "693:41:38"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                6822,
+                                6823
+                              ],
+                              "referencedDeclaration": 6822,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 5644,
+                            "name": "Identifier",
+                            "src": "745:7:38"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "bool",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes32",
+                                          "typeString": "bytes32"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "getProposalType",
+                                      "referencedDeclaration": 3314,
+                                      "type": "function (bytes32) view external returns (bool)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 5625,
+                                          "type": "contract ProposalInterface",
+                                          "value": "proposalGate"
+                                        },
+                                        "id": 5645,
+                                        "name": "Identifier",
+                                        "src": "753:12:38"
+                                      }
+                                    ],
+                                    "id": 5646,
+                                    "name": "MemberAccess",
+                                    "src": "753:28:38"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 5640,
+                                      "type": "bytes32",
+                                      "value": "_proposalID"
+                                    },
+                                    "id": 5647,
+                                    "name": "Identifier",
+                                    "src": "782:11:38"
+                                  }
+                                ],
+                                "id": 5648,
+                                "name": "FunctionCall",
+                                "src": "753:41:38"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 5642,
+                                  "type": "bool",
+                                  "value": "_isGAProposal"
+                                },
+                                "id": 5649,
+                                "name": "Identifier",
+                                "src": "798:13:38"
+                              }
+                            ],
+                            "id": 5650,
+                            "name": "BinaryOperation",
+                            "src": "753:58:38"
+                          }
+                        ],
+                        "id": 5651,
+                        "name": "FunctionCall",
+                        "src": "745:67:38"
+                      }
+                    ],
+                    "id": 5652,
+                    "name": "ExpressionStatement",
+                    "src": "745:67:38"
+                  },
+                  {
+                    "id": 5653,
+                    "name": "PlaceholderStatement",
+                    "src": "822:1:38"
+                  }
+                ],
+                "id": 5654,
+                "name": "Block",
+                "src": "735:95:38"
+              }
+            ],
+            "id": 5655,
+            "name": "ModifierDefinition",
+            "src": "666:164:38"
+          }
+        ],
+        "id": 5656,
+        "name": "ContractDefinition",
+        "src": "450:382:38"
+      }
+    ],
+    "id": 5657,
+    "name": "SourceUnit",
+    "src": "219:613:38"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.26+commit.4563c3fc.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2022-08-09T20:27:13.878Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

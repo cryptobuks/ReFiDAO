@@ -1,0 +1,19 @@
+{
+  "name": "Truffle-React-ReFiDAO-Sandbox",
+  "version": "1.0.0",
+  "description": "This is a sandbox for ReFiDAO",
+  "main": "truffle-config.js",
+  "dependencies": {
+    "openzeppelin-solidity": "^1.9.0",
+    "@truffle/hdwallet-provider": "^2.0.10"
+  },
+  "devDependencies": {
+    "solc": "0.4.26",
+    "solcpiler": "^0.0.17"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "author": "",
+  "license": "MIT"
+}
