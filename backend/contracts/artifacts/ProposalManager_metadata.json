@@ -1,0 +1,1274 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getProposalType",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "checkActionIsUpdateWallet",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "actionQuorum",
+				"outputs": [
+					{
+						"name": "dependency",
+						"type": "bool"
+					},
+					{
+						"name": "participantNumerator",
+						"type": "uint256"
+					},
+					{
+						"name": "participantDenominator",
+						"type": "uint256"
+					},
+					{
+						"name": "supporterNumerator",
+						"type": "uint256"
+					},
+					{
+						"name": "supporterDenominator",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_shortDescription",
+						"type": "bytes32"
+					}
+				],
+				"name": "createDelegateCandidancyProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "checkActionIsStatute",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_shortDescription",
+						"type": "bytes32"
+					},
+					{
+						"name": "_destinationAddress",
+						"type": "address"
+					},
+					{
+						"name": "_targetAmount",
+						"type": "uint256"
+					},
+					{
+						"name": "_startingTime",
+						"type": "uint256"
+					},
+					{
+						"name": "_duration",
+						"type": "uint256"
+					},
+					{
+						"name": "_externalHelp",
+						"type": "bool"
+					}
+				],
+				"name": "createProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "canExternalParticipate",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_shortDescription",
+						"type": "bytes32"
+					},
+					{
+						"name": "_proposedTime",
+						"type": "uint256"
+					},
+					{
+						"name": "_votingStarts",
+						"type": "uint256"
+					}
+				],
+				"name": "createGADateProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "proposalList",
+				"outputs": [
+					{
+						"name": "proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "shortDescription",
+						"type": "bytes32"
+					},
+					{
+						"name": "startingTime",
+						"type": "uint256"
+					},
+					{
+						"name": "endingTime",
+						"type": "uint256"
+					},
+					{
+						"name": "concludeStatus",
+						"type": "bool"
+					},
+					{
+						"name": "finalResult",
+						"type": "bool"
+					},
+					{
+						"name": "proposalType",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_gaIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "setProposalToGA",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "accessibleGate",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getProposalStatute",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_adr",
+						"type": "address"
+					}
+				],
+				"name": "getVoteForProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "isProposalVotable",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getProposalProposedDate",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_shortDescription",
+						"type": "bytes32"
+					}
+				],
+				"name": "createDissolutionProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getProposalAllowance",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_shortDescription",
+						"type": "bytes32"
+					},
+					{
+						"name": "_internalWallet",
+						"type": "address"
+					},
+					{
+						"name": "_externalWallet",
+						"type": "address"
+					}
+				],
+				"name": "createUpdateWalletProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "numTotalProposals",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "limitedVotingTime",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getProposaldestinationAddress",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "isProposalConcluded",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getProposalProposedAdr",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_shortDescription",
+						"type": "bytes32"
+					},
+					{
+						"name": "_targetMember",
+						"type": "address"
+					},
+					{
+						"name": "_startingTime",
+						"type": "uint256"
+					}
+				],
+				"name": "createExpelMemberProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "gaProposalAdditionalsList",
+				"outputs": [
+					{
+						"name": "actionType",
+						"type": "uint8"
+					},
+					{
+						"name": "candidate",
+						"type": "address"
+					},
+					{
+						"name": "proposedGADate",
+						"type": "uint256"
+					},
+					{
+						"name": "proposedStatute",
+						"type": "bytes32"
+					},
+					{
+						"name": "internalWallet",
+						"type": "address"
+					},
+					{
+						"name": "externalWallet",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_newAccessible",
+						"type": "address"
+					}
+				],
+				"name": "updateMembershipContractAddress",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_answer",
+						"type": "uint256"
+					}
+				],
+				"name": "voteForProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_gaManager",
+						"type": "address"
+					},
+					{
+						"name": "_daa",
+						"type": "address"
+					}
+				],
+				"name": "linkContract",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "isProposalConcludable",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "concludeProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "votesForDelegateProposal",
+				"outputs": [
+					{
+						"name": "participantNum",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_answer",
+						"type": "uint8"
+					}
+				],
+				"name": "voteForDelegate",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "proposalAdditionalsList",
+				"outputs": [
+					{
+						"name": "destinationAddress",
+						"type": "address"
+					},
+					{
+						"name": "targetAmount",
+						"type": "uint256"
+					},
+					{
+						"name": "allowExternalDeposition",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "checkActionIsSuccessfulGA",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "votesForEachProposal",
+				"outputs": [
+					{
+						"name": "participantNum",
+						"type": "uint256"
+					},
+					{
+						"name": "yesNum",
+						"type": "uint256"
+					},
+					{
+						"name": "abstainNum",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "checkActionIsDissolution",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getProposalProposedWalletAddress",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					},
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_newGA",
+						"type": "address"
+					}
+				],
+				"name": "updateGAContractAddress",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "gaManager",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					},
+					{
+						"name": "_shortDescription",
+						"type": "bytes32"
+					},
+					{
+						"name": "_newHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "createUpdateStatuteProposal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "daaGate",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "isProposalNotEndYet",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "getProposalFinalResult",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_proposalID",
+						"type": "bytes32"
+					}
+				],
+				"name": "checkActionIsExpel",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"name": "_membershipAdr",
+						"type": "address"
+					},
+					{
+						"name": "timeLimit_GAGDate",
+						"type": "uint256"
+					},
+					{
+						"name": "timeLimit_ExpelMember",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "ID",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"name": "DestinationAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "Amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "StartingTime",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "EndingTime",
+						"type": "uint256"
+					}
+				],
+				"name": "CreateProposal",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "ID",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"name": "Action",
+						"type": "uint8"
+					}
+				],
+				"name": "CreateGAProposal",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "ID",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"name": "Concluder",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "AtTime",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"name": "FinalResult",
+						"type": "bool"
+					}
+				],
+				"name": "ConcludeProposal",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "previousOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipRenounced",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"methods": {
+				"renounceOwnership()": {
+					"details": "Allows the current owner to relinquish control of the contract."
+				},
+				"transferOwnership(address)": {
+					"details": "Allows the current owner to transfer control of the contract to a newOwner.",
+					"params": {
+						"_newOwner": "The address to transfer ownership to."
+					}
+				}
+			}
+		},
+		"userdoc": {
+			"methods": {
+				"concludeProposal(bytes32)": {
+					"notice": "title Conclude the current concludable proposal dev Conclude delegate candidacy is implemented in a separate function. notice This function shall be called by anyone, even non-members."
+				},
+				"createDelegateCandidancyProposal(bytes32,bytes32)": {
+					"notice": "title Propose their own candidacy for the next (replacing) delegate notice People can propose outside GA but only during GA can one vote."
+				},
+				"createDissolutionProposal(bytes32,bytes32)": {
+					"notice": "title Propose dissolve DAAS. dev   The precise starting date/time is subject to the next GA date/time"
+				},
+				"createExpelMemberProposal(bytes32,bytes32,address,uint256)": {
+					"notice": "notice We cannot directly expel a delegate. If the member happens to be a whitelister, there must be at least more than two, to be able to delete one. dev    Now we check whether this member is a whitelister. Later, when the proposal concludes, another check is needed."
+				},
+				"createGADateProposal(bytes32,bytes32,uint256,uint256)": {
+					"notice": "title To propose a new GA. This proposal is generated by members. "
+				},
+				"createProposal(bytes32,bytes32,address,uint256,uint256,uint256,bool)": {
+					"notice": "title Create a normal proposal dev   The infomation is stored in two mapping, one is inside the minimal proposal, the additionals are stored in the additionals mappings for the normal proposal."
+				},
+				"createUpdateStatuteProposal(bytes32,bytes32,bytes32)": {
+					"notice": "title Update the constitute hash."
+				},
+				"createUpdateWalletProposal(bytes32,bytes32,address,address)": {
+					"notice": "title Create a proposal (can only be voted during GA). To update the wallet address."
+				},
+				"getProposalType(bytes32)": {
+					"notice": "dev Return the type of proposal: If it is a normal proposal then return false; If it's a GA proposal, return true;"
+				},
+				"renounceOwnership()": {
+					"notice": "Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+				},
+				"setProposalToGA(bytes32,uint256)": {
+					"notice": "title New method of allocating a GA proposal (except for the delegate election) to a scheduled GA dev   Need to make sure that the current GA proposal has not yet be assigned. notice Delegate candidacy related proposals cannot be set via such function but another one.  param _proposalID The reference ID of proposals. param _gaIndex The index of the addressed GA."
+				},
+				"voteForDelegate(bytes32,uint8)": {
+					"notice": "title Vote for new delegate proposal. notice There is/are (multiple) proposal(s) for the delegate position. One has only one vote for such proposal that happens at the same time."
+				},
+				"voteForProposal(bytes32,uint256)": {
+					"notice": "notice All the proposals except the vote for delegate can use this function."
+				}
+			}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"backend/contracts/ProposalManager.sol": "ProposalManager"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"backend/contracts/Accessible.sol": {
+			"keccak256": "0x91a89ba7ab3c40e2a8c6c403ca7ba9e4f43311885220acc9f393686381c191b3",
+			"urls": [
+				"bzzr://36a909b6313370fa0ce1aa4257ef7786a7b9e9608e54d2098204585f318aba2f"
+			]
+		},
+		"backend/contracts/DAAInterface.sol": {
+			"keccak256": "0xa2e5ffe45902855ede2419204744d1f82eaa0e6ef24db38a21eed60b1c34ee7c",
+			"urls": [
+				"bzzr://3b9123721dde8053c67bdb80c3a33601c886b0e3058dbbf889614835eb97fef9"
+			]
+		},
+		"backend/contracts/GAManager.sol": {
+			"keccak256": "0x2beb03379cadbeca6ae032e01a381a1ae1b35123d9f168765ae9fdc38b2c781b",
+			"urls": [
+				"bzzr://8db9a42cce111782030e1a66d67d3cb194000d81e508c4ca1623779ec5d6c8fc"
+			]
+		},
+		"backend/contracts/MinimalProposal.sol": {
+			"keccak256": "0xa6edd298aed4e1a4a62f8ac6befbaad6db6a4c914355afb5abe09f7db8ce7e09",
+			"urls": [
+				"bzzr://75e40b4684fe1485cf4d6e7d5b68827b457f944c7cc93b30cf33d859a1a5bab3"
+			]
+		},
+		"backend/contracts/ProposalInterface.sol": {
+			"keccak256": "0x4cb8ce1ec1e34971f5628324bd824e579a1f7cfb26f02a47b2e8078f07ed3f07",
+			"urls": [
+				"bzzr://bf3d4321a7d9de84bd71822a658c6bd62f2f56783ab4cf6bd1f4ada9b7db6401"
+			]
+		},
+		"backend/contracts/ProposalManager.sol": {
+			"keccak256": "0xb3f8aa23d93df86301b2ca13ac12d45e8fd4b631344ad67a4ca8201da981894f",
+			"urls": [
+				"bzzr://640f7c08844f016607f6df44b9d57ed54a031c9c3cfd89cfbf5f27cacc889004"
+			]
+		},
+		"backend/contracts/TallyClerkLib.sol": {
+			"keccak256": "0xb00ad827c320fe3aaf8559307fd932e37369c1d917d3276ccd0bc8975a7bdf03",
+			"urls": [
+				"bzzr://7f46f9ae59d0a078d9cc54ea506ad4627abe075de4d8f6ed154d86d05c8c39c5"
+			]
+		},
+		"backend/contracts/TimedLib.sol": {
+			"keccak256": "0x6619dc0c54bdc7f5291c2ec5968b8f46d36dedb6bdb2896a13690282a67b45f4",
+			"urls": [
+				"bzzr://09d79ee8e0ece24ef73e56c97679ed7a83755b212d6fae26ae784663322a199a"
+			]
+		},
+		"backend/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol": {
+			"keccak256": "0xa1c5e1d9ebbf654d332ca8e7a5c04a6a6a9d142eeaab3b988c2c909c81a62bef",
+			"urls": [
+				"bzzr://d062fb4a1b6de1f036ee0e73364a2532c4757eb68e95dd8c5cbb2d17b8732c6a"
+			]
+		},
+		"backend/node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol": {
+			"keccak256": "0x84c7090c27cf3657b73d9e26b6b316975fa0bd233b8169f254de0c3b3acfaefc",
+			"urls": [
+				"bzzr://b983355647976c1daa5de581a1b6a41be9c5adc17cce257b8679649db78f8a11"
+			]
+		}
+	},
+	"version": 1
+}
