@@ -1,2 +1,2 @@
-# React Truffle ReFiDAO Sandbox
+# ReFiDAO
 
