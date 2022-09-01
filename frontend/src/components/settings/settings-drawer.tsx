@@ -17,12 +17,12 @@ import { RightAlign } from '@/components/icons/right-align';
 
 const ColorPreset = [
   {
-    label: 'Black',
-    value: '#323743',
+    label: 'Blue',
+    value: '#3B4590',
   },
   {
-    label: 'Blue',
-    value: '#2a52be',
+    label: 'Black',
+    value: '#323743',
   },
   {
     label: 'Green',

@@ -2,6 +2,7 @@ import { useWindowScroll } from '@/lib/hooks/use-window-scroll';
 import Logo from '@/components/ui/logo';
 import Button from '@/components/ui/button';
 import { FlashIcon } from '@/components/icons/flash';
+import { DotsIcon } from '@/components/icons/dots-icon';
 import { SearchFrom } from '@/components/search/view';
 import SearchButton from '@/components/search/button';
 import ActiveLink from '@/components/ui/links/active-link';
@@ -20,6 +21,12 @@ function NotificationButton() {
         <span className="absolute top-0 right-0 h-2.5 w-2.5 rounded-full bg-brand shadow-light sm:h-3 sm:w-3" />
       </div>
     </ActiveLink>
+  );
+}
+
+function DrawerButton() {
+  return (
+    <DotsIcon />
   );
 }
 
@@ -44,6 +51,7 @@ function HeaderRightArea() {
         )} */}
         {/* <NotificationButton /> */}
         <WalletConnect />
+        <DrawerButton />
       </div>
 
       {/* <div className="flex items-center lg:hidden">
