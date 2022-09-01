@@ -51,10 +51,10 @@ function HeaderRightArea() {
         )} */}
         {/* <NotificationButton /> */}
         <WalletConnect />
-        <DrawerButton />
+        {/* <DrawerButton /> */}
       </div>
 
-      {/* <div className="flex items-center lg:hidden">
+      <div className="flex items-center lg:hidden">
         <NotificationButton />
         <Hamburger
           isOpen={isOpen}
@@ -62,7 +62,7 @@ function HeaderRightArea() {
           color="white"
           className="shadow-main ltr:ml-3.5 rtl:mr-3.5 dark:border dark:border-solid dark:border-gray-700 dark:bg-light-dark dark:text-white ltr:sm:ml-5 rtl:sm:mr-5"
         />
-      </div> */}
+      </div>
     </div>
   );
 }
