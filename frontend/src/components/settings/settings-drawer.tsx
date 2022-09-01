@@ -178,9 +178,9 @@ function LayoutSwitcher() {
 function ColorSwitcher() {
   const [themeColor, setThemeColor] = useLocalStorage(
     'criptic-color',
-    '#323743'
+    '#3B4590'
   );
-  useThemeColor(themeColor ? themeColor : '#323743');
+  useThemeColor(themeColor ? themeColor : '#3B4590');
 
   return (
     <div className="px-6 pt-8">
