@@ -3,6 +3,8 @@ import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 
 const web3modalStorageKey = 'WEB3_CONNECT_CACHED_PROVIDER';
+const AuroraTokenMainet  = '0x8bec47865ade3b172a928df8f990bc7f2a3b9f79';
+const ERC20ABI = require('../../abi/erc20.json');
 
 export const WalletContext = createContext<any>({});
 
@@ -52,7 +54,11 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   const getBalance = async (provider: any, walletAddress: string) => {
     const walletBalance = await provider.getBalance(walletAddress);
     const balanceInEth = ethers.utils.formatEther(walletBalance);
-    setBalance(balanceInEth);
+    const Aurora = await new ethers.Contract(AuroraTokenMainet, ERC20ABI, provider)
+    const AuroraBalance = await Aurora.balanceOf(walletAddress);
+    const AuroraBalanceConvert = ethers.utils.formatEther(AuroraBalance);
+    console.log(AuroraBalanceConvert)
+    setBalance(AuroraBalanceConvert);
   };
 
   const disconnectWallet = () => {

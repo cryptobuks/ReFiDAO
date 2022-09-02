@@ -35,7 +35,7 @@ export default function WalletConnect() {
                 leaveTo="opacity-0 translate-y-4"
               >
                 <Menu.Items className="absolute -right-20 mt-3 w-72 origin-top-right rounded-lg bg-white shadow-large dark:bg-gray-900 sm:-right-14">
-                  <Menu.Item>
+                  {/* <Menu.Item>
                     <div className="border-b border-dashed border-gray-200 p-3 dark:border-gray-700">
                       <ActiveLink
                         href="#"
@@ -48,7 +48,7 @@ export default function WalletConnect() {
                         <ChevronForward />
                       </ActiveLink>
                     </div>
-                  </Menu.Item>
+                  </Menu.Item> */}
                   <Menu.Item>
                     <Menu.Item>
                       <div className="border-b border-dashed border-gray-200 px-6 py-5 dark:border-gray-700">
@@ -63,7 +63,7 @@ export default function WalletConnect() {
                           </span>
                         </div>
                         <div className="mt-3 font-medium uppercase tracking-wider text-gray-900 dark:text-white">
-                          {balance} ETH
+                          {balance} AURORA
                         </div>
                       </div>
                     </Menu.Item>
