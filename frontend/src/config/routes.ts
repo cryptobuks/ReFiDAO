@@ -11,7 +11,7 @@ const routes = {
   search: '/search',
   notification: '/notification',
   vote: '/empty',
-  membership: '/empty',
+  membership: '/membership',
   voteProposals: '/vote-proposals',
   createProposal: '/vote-proposals/create',
   charts: '/charts',

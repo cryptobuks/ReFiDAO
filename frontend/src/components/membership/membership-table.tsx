@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import {
   useTable,
@@ -13,9 +13,20 @@ import { ChevronDown } from '@/components/icons/chevron-down';
 import { LongArrowRight } from '@/components/icons/long-arrow-right';
 import { LongArrowLeft } from '@/components/icons/long-arrow-left';
 import { LinkIcon } from '@/components/icons/link-icon';
-import { TransactionData } from '@/data/static/transaction-data';
+import { MembershipData } from '@/data/static/membership-data';
 import { useBreakpoint } from '@/lib/hooks/use-breakpoint';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
+import { RadioGroup } from '@/components/ui/radio-group';
+import { motion } from 'framer-motion';
+import { Listbox } from '@/components/ui/listbox';
+import { Transition } from '@/components/ui/transition';
+import { SearchIcon } from '@/components/icons/search';
+import { useModal } from '@/components/modal-views/context';
+
+const sort = [
+  { id: 1, name: 'Delegate' },
+  { id: 2, name: 'Member' },
+];
 
 const COLUMNS = [
   {
@@ -25,13 +36,19 @@ const COLUMNS = [
     maxWidth: 80,
   },
   {
-    Header: 'Type',
-    accessor: 'transactionType',
-    minWidth: 60,
-    maxWidth: 80,
+    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Address</div>,
+    accessor: 'address',
+    // @ts-ignore
+    Cell: ({ cell: { value } }) => (
+      <div className="flex items-center justify-end">
+        <LinkIcon className="h-[18px] w-[18px] ltr:mr-2 rtl:ml-2" /> {value}
+      </div>
+    ),
+    minWidth: 100,
+    maxWidth: 280,
   },
   {
-    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Date</div>,
+    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Date join</div>,
     accessor: 'createdAt',
     // @ts-ignore
     Cell: ({ cell: { value } }) => (
@@ -41,8 +58,8 @@ const COLUMNS = [
     maxWidth: 220,
   },
   {
-    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Asset</div>,
-    accessor: 'symbol',
+    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Role</div>,
+    accessor: 'role',
     // @ts-ignore
     Cell: ({ cell: { value } }) => (
       <div className="ltr:text-right rtl:text-left">{value}</div>
@@ -60,43 +77,12 @@ const COLUMNS = [
     minWidth: 100,
     maxWidth: 180,
   },
-  {
-    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Address</div>,
-    accessor: 'address',
-    // @ts-ignore
-    Cell: ({ cell: { value } }) => (
-      <div className="flex items-center justify-end">
-        <LinkIcon className="h-[18px] w-[18px] ltr:mr-2 rtl:ml-2" /> {value}
-      </div>
-    ),
-    minWidth: 220,
-    maxWidth: 280,
-  },
-  {
-    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Amount</div>,
-    accessor: 'amount',
-    // @ts-ignore
-    Cell: ({ cell: { value } }) => (
-      <div className="-tracking-[1px] ltr:text-right rtl:text-left">
-        <strong className="mb-0.5 flex justify-end text-base md:mb-1.5 md:text-lg lg:text-base 3xl:text-2xl">
-          {value.balance}
-          <span className="inline-block ltr:ml-1.5 rtl:mr-1.5 md:ltr:ml-2 md:rtl:mr-2">
-            BTC
-          </span>
-        </strong>
-        <span className="text-gray-600 dark:text-gray-400">
-          ${value.usdBalance}
-        </span>
-      </div>
-    ),
-    minWidth: 200,
-    maxWidth: 300,
-  },
 ];
 
 export default function TransactionTable() {
-  const data = React.useMemo(() => TransactionData, []);
+  const data = React.useMemo(() => MembershipData, []);
   const columns = React.useMemo(() => COLUMNS, []);
+  const { openModal } = useModal();
 
   const {
     getTableProps,
@@ -123,6 +109,68 @@ export default function TransactionTable() {
     usePagination
   );
 
+  function SortList() {
+    const [selectedItem, setSelectedItem] = useState(sort[0]);
+  
+    return (
+      <div className="relative w-full md:w-auto">
+        <Listbox value={selectedItem} onChange={setSelectedItem}>
+          <Listbox.Button className="flex h-11 w-full items-center justify-between rounded-lg bg-gray-100 px-4 text-sm text-gray-900 dark:bg-light-dark dark:text-white md:w-36 lg:w-40 xl:w-56">
+            {selectedItem.name}
+            <ChevronDown />
+          </Listbox.Button>
+          <Transition
+            enter="ease-out duration-200"
+            enterFrom="opacity-0 translate-y-2"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 -translate-y-0"
+            leaveTo="opacity-0 translate-y-2"
+          >
+            <Listbox.Options className="absolute left-0 z-10 mt-2 w-full origin-top-right rounded-lg bg-white p-3 shadow-large dark:bg-light-dark">
+              {sort.map((item) => (
+                <Listbox.Option key={item.id} value={item}>
+                  {({ selected }) => (
+                    <div
+                      className={`block cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-gray-900 transition dark:text-white  ${
+                        selected
+                          ? 'my-1 bg-gray-100 dark:bg-dark'
+                          : 'hover:bg-gray-50 dark:hover:bg-gray-700'
+                      }`}
+                    >
+                      {item.name}
+                    </div>
+                  )}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
+        </Listbox>
+      </div>
+    );
+  }
+  
+  function Search() {
+    return (
+      <form
+        className="relative flex w-full rounded-full md:w-auto lg:w-64 xl:w-80"
+        noValidate
+        role="search"
+      >
+        <label className="flex w-full items-center">
+          <input
+            className="h-11 w-full appearance-none rounded-lg border-2 border-gray-200 bg-transparent py-1 text-sm tracking-tighter text-gray-900 outline-none transition-all placeholder:text-gray-600 focus:border-gray-900 ltr:pr-5 ltr:pl-10 rtl:pr-10 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-gray-500"
+            placeholder="Search"
+            autoComplete="off"
+          />
+          <span className="pointer-events-none absolute flex h-full w-8 cursor-pointer items-center justify-center text-gray-600 hover:text-gray-900 ltr:left-0 ltr:pl-2 rtl:right-0 rtl:pr-2 dark:text-gray-500 sm:ltr:pl-3 sm:rtl:pr-3">
+            <SearchIcon className="h-4 w-4" />
+          </span>
+        </label>
+      </form>
+    );
+  }
+
   const { pageIndex } = state;
 
   return (
@@ -132,6 +180,13 @@ export default function TransactionTable() {
           <h2 className="mb-3 shrink-0 text-lg font-medium uppercase text-black dark:text-white sm:text-xl md:mb-0 md:text-2xl">
             Members
           </h2>
+          <Search />
+          <SortList />
+          <Button 
+            shape="rounded"
+            onClick={() => openModal('CREATE_VIEW')}
+            color="info"
+          >CREATE</Button>
         </div>
       </div>
       <div className="-mx-0.5">

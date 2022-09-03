@@ -47,10 +47,10 @@ const HomePage: NextPageWithLayout<
   return (
     <>
       <NextSeo
-        title="RefiDAO"
-        description="RefiDAO Dashboard"
+        title="RefiDAO Membership"
+        description="RefiDAO Membership"
       />
-      <div className="mx-auto w-full max-w-[1160px] text-sm md:pt-14 4xl:pt-24">
+      <div className="mx-auto w-full max-w-[1160px] text-sm md:pt-6 4xl:pt-8">
           <div className="md:col-span-2 lg:col-span-full xl:col-start-1 xl:col-end-9 xl:row-start-2 xl:row-end-3 2xl:col-start-1 2xl:col-end-10 2xl:row-start-2 2xl:row-end-3 3xl:col-span-9 3xl:row-start-2 3xl:row-end-3">
             <MembershipTable />
           </div>
