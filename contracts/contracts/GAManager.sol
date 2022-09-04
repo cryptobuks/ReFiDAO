@@ -37,7 +37,7 @@ contract GAManager is Ownable {
 
     uint8 constant iPotentialCandidateListForCurrentGA = 0;
     uint8 constant iTempList = 1;
-    TallyClerkLib.CandidancyForDelegate[] candidatesList;
+    TallyClerkLib.CandidancyForDelegate[2] candidatesList;
 
     struct CandidateAssistant {
         mapping(address => uint256) listOfCandidateAddress;
@@ -47,7 +47,7 @@ contract GAManager is Ownable {
 
     uint8 constant iCandidateAssistant = 0;
     uint8 constant iTempCandidateAssistant = 1;
-    CandidateAssistant[] candidates;
+    CandidateAssistant[2] candidates;
 
     uint256 constant TIMESPAN_GA = 104 weeks; // The delegate can setup the annual GA that happens in max. 2 years
     uint256 constant CLOSEST_FUTURE_GA = 4 weeks; // The annual GA can only be set in 4 weeks.
@@ -175,7 +175,6 @@ contract GAManager is Ownable {
             candidates[iCandidateAssistant].listOfCandidateAddress[_adr] == 0
         );
         // list starts from 0
-
         candidatesList[iPotentialCandidateListForCurrentGA]
             .list[candidates[iCandidateAssistant].numberOfCandidate]
             .candidate = _adr;
@@ -386,15 +385,21 @@ contract GAManager is Ownable {
                             ] = i;
                     }
 
+                    delete candidatesList[iPotentialCandidateListForCurrentGA];
+
                     candidatesList[
                         iPotentialCandidateListForCurrentGA
-                    ] = candidatesList;
+                    ] = candidatesList[iTempList];
+
+                    delete candidates[iCandidateAssistant];
+
                     candidates[iCandidateAssistant] = candidates[
                         iTempCandidateAssistant
                     ];
 
                     delete (candidatesList[iTempList]);
                     delete (candidates[iTempCandidateAssistant]);
+
                     return (true, true);
                 }
             } else {
