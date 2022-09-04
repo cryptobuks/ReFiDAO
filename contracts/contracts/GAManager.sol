@@ -345,10 +345,9 @@ contract GAManager is Ownable {
                     // 2. Need to create new proposal list.
 
                     // setup temps
-                    TallyClerkLib.CandidancyForDelegate storage tempList;
-
-                    tempList.totalLength = potentialCandidateListForCurrentGA
-                        .potentialRevote;
+                    // TallyClerkLib.CandidancyForDelegate storage tempList;
+                    // tempList.totalLength = potentialCandidateListForCurrentGA
+                    //     .potentialRevote;
 
                     // reset candidateAssitant list
                     for (
@@ -363,29 +362,39 @@ contract GAManager is Ownable {
                     candidateAssitant.numberOfCandidate = 0;
                     delete candidateAssitant.candidates;
 
-                    candidateAssitant.numberOfCandidate = tempList.totalLength;
+                    // set candidateAssitant
+                    candidateAssitant
+                        .numberOfCandidate = potentialCandidateListForCurrentGA
+                        .potentialRevote;
 
                     for (
                         uint256 i = 0;
                         i < potentialCandidateListForCurrentGA.potentialRevote;
                         i++
                     ) {
-                        tempList.list[i] = potentialCandidateListForCurrentGA
-                            .list[
-                                potentialCandidateListForCurrentGA
-                                    .markedPositionForRevote[i]
-                            ];
                         candidateAssitant.listOfCandidateAddress[
-                            tempList.list[i].candidate
+                            potentialCandidateListForCurrentGA.list[i].candidate
                         ] = i;
-                        candidateAssitant.candidates[i] = tempList
+                        candidateAssitant.candidates[
+                                i
+                            ] = potentialCandidateListForCurrentGA
                             .list[i]
                             .candidate;
                     }
 
-                    potentialCandidateListForCurrentGA = tempList;
+                    // reset potentialCandidateListForCurrentGA, keeping just list values
+                    potentialCandidateListForCurrentGA.revoteOrNot = false;
+                    potentialCandidateListForCurrentGA.potentialRevote = 0;
+                    for (
+                        uint256 i = 0;
+                        i < potentialCandidateListForCurrentGA.participantNum;
+                        i++
+                    ) {
+                        potentialCandidateListForCurrentGA
+                            .markedPositionForRevote[i] = 0;
+                    }
+                    potentialCandidateListForCurrentGA.participantNum = 0;
 
-                    delete (tempList);
                     return (true, true);
                 }
             } else {
