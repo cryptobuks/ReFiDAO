@@ -37,16 +37,15 @@ contract GAManager is Ownable {
 
     TallyClerkLib.CandidancyForDelegate
         public potentialCandidateListForCurrentGA;
-    TallyClerkLib.CandidancyForDelegate private tempList;
 
     struct CandidateAssistant {
         mapping(address => uint256) listOfCandidateAddress;
+        address[] candidates;
         uint256 numberOfCandidate;
     }
     // address newDelegate;
 
     CandidateAssistant public candidateAssitant;
-    CandidateAssistant private tempCandidateAssitant;
 
     uint256 constant TIMESPAN_GA = 104 weeks; // The delegate can setup the annual GA that happens in max. 2 years
     uint256 constant CLOSEST_FUTURE_GA = 4 weeks; // The annual GA can only be set in 4 weeks.
@@ -129,7 +128,7 @@ contract GAManager is Ownable {
         address _membershipAdr,
         address _proposalInterfaceAdr,
         bytes32 _initialHash
-    ) public {
+    ) {
         accessibleGate = Accessible(_membershipAdr);
         proposalGate = ProposalInterface(_proposalInterfaceAdr);
         currentHashOfStatutes = _initialHash;
@@ -164,7 +163,6 @@ contract GAManager is Ownable {
     }
 
     /**
-     *@title
      */
     function addDelegateCandidate(address _adr)
         external
@@ -190,7 +188,6 @@ contract GAManager is Ownable {
 
     /**
      *Assign all the candidacy proposals that are in the pipeline to the target GA.
-     *@param _proposalID The reference ID of proposals.
      *@param _gaIndex The index of the target GA.
      */
     function setDelegateProposalsToGA(uint256 _gaIndex) public returns (bool) {
@@ -347,10 +344,27 @@ contract GAManager is Ownable {
                         );
                     // 2. Need to create new proposal list.
 
+                    // setup temps
+                    TallyClerkLib.CandidancyForDelegate storage tempList;
+
                     tempList.totalLength = potentialCandidateListForCurrentGA
                         .potentialRevote;
-                    tempCandidateAssitant.numberOfCandidate = tempList
-                        .totalLength;
+
+                    // reset candidateAssitant list
+                    for (
+                        uint256 i = 0;
+                        i < candidateAssitant.candidates.length;
+                        i++
+                    ) {
+                        candidateAssitant.listOfCandidateAddress[
+                            candidateAssitant.candidates[i]
+                        ] = 0;
+                    }
+                    candidateAssitant.numberOfCandidate = 0;
+                    delete candidateAssitant.candidates;
+
+                    candidateAssitant.numberOfCandidate = tempList.totalLength;
+
                     for (
                         uint256 i = 0;
                         i < potentialCandidateListForCurrentGA.potentialRevote;
@@ -361,14 +375,17 @@ contract GAManager is Ownable {
                                 potentialCandidateListForCurrentGA
                                     .markedPositionForRevote[i]
                             ];
-                        tempCandidateAssitant.listOfCandidateAddress[
+                        candidateAssitant.listOfCandidateAddress[
                             tempList.list[i].candidate
                         ] = i;
+                        candidateAssitant.candidates[i] = tempList
+                            .list[i]
+                            .candidate;
                     }
+
                     potentialCandidateListForCurrentGA = tempList;
-                    candidateAssitant = tempCandidateAssitant;
+
                     delete (tempList);
-                    delete (tempCandidateAssitant);
                     return (true, true);
                 }
             } else {
@@ -383,10 +400,7 @@ contract GAManager is Ownable {
         }
     }
 
-    function setGATime(uint256 _nextGATime, uint256 _duration)
-        public
-        returns (bool)
-    {
+    function setGATime(uint256 _nextGATime, uint256 _duration) public {
         // either it's from delegate, or it's from GA proposal
         require(accessibleGate.checkIsDelegate(msg.sender));
         require(canSetGA(_nextGATime, false));
@@ -417,7 +431,6 @@ contract GAManager is Ownable {
     function setExtraordinaryGA(bytes32 _proposalID)
         public
         successfulProposal(_proposalID)
-        returns (bool)
     {
         // require(proposalGate.getProposalFinalResult(_proposalID));
         require(proposalGate.checkActionIsSuccessfulGA(_proposalID));

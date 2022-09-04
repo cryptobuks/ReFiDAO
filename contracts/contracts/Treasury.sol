@@ -149,7 +149,7 @@ contract Treasury is Ownable {
      *Pay the fee when the membership is granted (whitelisted by two)
      *@dev Transfer the money to the wallet only when the value is higher than needed.
      */
-    function payNewMembershipFee() public payable returns (bool) {
+    function payNewMembershipFee() public payable {
         require(accessibleGate.checkIsWhitelistedByTwo(msg.sender));
         require(accessibleGate.reachDesiredValue(msg.value));
 

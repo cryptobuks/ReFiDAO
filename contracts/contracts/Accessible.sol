@@ -64,7 +64,7 @@ abstract contract Accessible {
 
     function reachDesiredValue(uint256 _value)
         external
-        view
+        pure
         virtual
         returns (bool);
 
@@ -74,7 +74,7 @@ abstract contract Accessible {
 
     function getTotalMemberNumber() public view virtual returns (uint256);
 
-    function addNewMember(address _newMember) public virtual returns (bool);
+    function addNewMember(address _newMember) public virtual;
 
     function testFuncGetWhitelistersLength()
         public
@@ -89,5 +89,5 @@ abstract contract Accessible {
         return whitelisterList[_i];
     }
 
-    function setDelegate(address _adr) public virtual returns (bool);
+    function setDelegate(address _adr) public virtual;
 }

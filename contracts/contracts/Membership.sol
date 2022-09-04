@@ -261,7 +261,7 @@ contract Membership is Accessible, Ownable {
     //     // call function of treasuryInterface and forward the money.
     // }
 
-    function addNewMember(address _newMember) public override returns (bool) {
+    function addNewMember(address _newMember) public override {
         //treasuryOnly
         require(msg.sender == treasuryAdr);
         require(
@@ -282,7 +282,7 @@ contract Membership is Accessible, Ownable {
      *To remove a member from the association
      *@notice Can only be triggered by a valid proposal or also possible for delegate to expel a member?
      */
-    function removeMember(address _adr) public returns (bool) {
+    function removeMember(address _adr) public {
         require(membershipList[_adr] == membershipStatus.isMember);
         //@TODO require(verify msg.sender == purposal address) Also need to make sure that the purposal contract is actuallly pertinent to the removal of a member.
         //@TODO refund its membership contribution?
@@ -298,7 +298,7 @@ contract Membership is Accessible, Ownable {
      *Set the account address of the delegate.
      *@dev This can only be successfully called by the GA purposal (upon sucess of voting..)
      */
-    function setDelegate(address _adr) public override returns (bool) {
+    function setDelegate(address _adr) public override {
         require(msg.sender == gaManagerAdr);
         //@TODO require(verify msg.sender == GA purposal address)
         require(membershipList[_adr] == membershipStatus.isMember);
@@ -357,7 +357,7 @@ contract Membership is Accessible, Ownable {
 
     function reachDesiredValue(uint256 _value)
         external
-        view
+        pure
         override
         returns (bool)
     {

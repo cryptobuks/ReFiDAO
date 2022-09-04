@@ -245,7 +245,7 @@ contract ProposalManager is
         uint256 _startingTime,
         uint256 _duration,
         bool _externalHelp
-    ) public memberOnly shouldVoteInTime(_duration) returns (bool) {
+    ) public memberOnly shouldVoteInTime(_duration) {
         require(_startingTime > block.timestamp);
 
         uint256 _endingTime = _startingTime.add(_duration);
@@ -286,7 +286,7 @@ contract ProposalManager is
     function createDelegateCandidancyProposal(
         bytes32 _proposalID,
         bytes32 _shortDescription
-    ) public memberOnly returns (bool) {
+    ) public memberOnly {
         // require(_duration.isInside(0, limitedVotingTime[uint256(ActionType.proposeDelegateCandidancy)]));
 
         // BasicProposal memory tempBasic = BasicProposal(_proposalID, _shortDescription, 0, 0, false, false, true);
@@ -334,7 +334,6 @@ contract ProposalManager is
         public
         // ,uint256 _votingDuration
         memberOnly
-        returns (bool)
     {
         // require(_votingDuration.isInside(0, limitedVotingTime[uint256(ActionType.proposeGADate)]));
         require(gaManager.canSetGA(_proposedTime, true)); // propose an extraordinary GA
@@ -368,7 +367,7 @@ contract ProposalManager is
     function createDissolutionProposal(
         bytes32 _proposalID,
         bytes32 _shortDescription
-    ) public memberOnly returns (bool) {
+    ) public memberOnly {
         // proposalsForNextGA.push(_proposalID);
         proposalsCanBeSetForNextGA[_proposalID] = true;
 
@@ -399,7 +398,7 @@ contract ProposalManager is
         bytes32 _proposalID,
         bytes32 _shortDescription,
         bytes32 _newHash
-    ) public memberOnly returns (bool) {
+    ) public memberOnly {
         // proposalsForNextGA.push(_proposalID);
         proposalsCanBeSetForNextGA[_proposalID] = true;
 
@@ -432,7 +431,7 @@ contract ProposalManager is
         bytes32 _shortDescription,
         address _targetMember,
         uint256 _startingTime
-    ) public memberOnly returns (bool) {
+    ) public memberOnly {
         require(accessibleGate.checkIsMember(_targetMember));
         require(accessibleGate.checkIsDelegate(_targetMember) == false);
         // require(accessibleGate.isWhitelister(_targetMember) == false || (accessibleGate.isWhitelister(_targetMember) && accessibleGate.getWhitelisterNumber() > 2));
@@ -467,7 +466,7 @@ contract ProposalManager is
         bytes32 _shortDescription,
         address _internalWallet,
         address _externalWallet
-    ) public memberOnly returns (bool) {
+    ) public memberOnly {
         require(_internalWallet != address(0) || _externalWallet != address(0));
 
         // The real starting time and ending time needs to be later filled according to the latest GA.
