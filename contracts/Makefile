@@ -1,4 +1,4 @@
-
+.PHONY: test build clean
 
 clean:
 	yarn hardhat clean
