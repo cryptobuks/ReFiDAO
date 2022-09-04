@@ -35,9 +35,9 @@ contract GAManager is Ownable {
     ProposalInterface public proposalGate;
     bytes32 public currentHashOfStatutes;
 
-    uint8 constant iPotentialCandidateListForCurrentGA = 0;
-    uint8 constant iTempList = 1;
-    TallyClerkLib.CandidancyForDelegate[2] candidatesList;
+    TallyClerkLib.CandidancyForDelegate
+        public potentialCandidateListForCurrentGA;
+    TallyClerkLib.CandidancyForDelegate private tempList;
 
     struct CandidateAssistant {
         mapping(address => uint256) listOfCandidateAddress;
@@ -45,9 +45,8 @@ contract GAManager is Ownable {
     }
     // address newDelegate;
 
-    uint8 constant iCandidateAssistant = 0;
-    uint8 constant iTempCandidateAssistant = 1;
-    CandidateAssistant[2] candidates;
+    CandidateAssistant public candidateAssitant;
+    CandidateAssistant private tempCandidateAssitant;
 
     uint256 constant TIMESPAN_GA = 104 weeks; // The delegate can setup the annual GA that happens in max. 2 years
     uint256 constant CLOSEST_FUTURE_GA = 4 weeks; // The annual GA can only be set in 4 weeks.
@@ -130,7 +129,7 @@ contract GAManager is Ownable {
         address _membershipAdr,
         address _proposalInterfaceAdr,
         bytes32 _initialHash
-    ) {
+    ) public {
         accessibleGate = Accessible(_membershipAdr);
         proposalGate = ProposalInterface(_proposalInterfaceAdr);
         currentHashOfStatutes = _initialHash;
@@ -146,7 +145,7 @@ contract GAManager is Ownable {
         onlyOwner
         notEmpty(_newAccessible)
     {
-        // require(_newAccessible != 0x0);
+        // require(_newAccessible != address(0));
         accessibleGate = Accessible(_newAccessible);
     }
 
@@ -160,39 +159,38 @@ contract GAManager is Ownable {
         onlyOwner
         notEmpty(_newProposal)
     {
-        // require(_newProposal != 0x0);
+        // require(_newProposal != address(0));
         proposalGate = ProposalInterface(_newProposal);
     }
 
     /**
+     *@title
      */
     function addDelegateCandidate(address _adr)
         external
         beforeGAstarts
         proposalOnly
     {
-        require(
-            candidates[iCandidateAssistant].listOfCandidateAddress[_adr] == 0
-        );
+        require(candidateAssitant.listOfCandidateAddress[_adr] == 0);
         // list starts from 0
-        candidatesList[iPotentialCandidateListForCurrentGA]
-            .list[candidates[iCandidateAssistant].numberOfCandidate]
+        potentialCandidateListForCurrentGA
+            .list[candidateAssitant.numberOfCandidate]
             .candidate = _adr;
-        candidatesList[iPotentialCandidateListForCurrentGA]
-            .list[candidates[iCandidateAssistant].numberOfCandidate]
+        potentialCandidateListForCurrentGA
+            .list[candidateAssitant.numberOfCandidate]
             .supportingVoteNum = 0;
         // listOfCandidateAddress starts from 1
-        candidates[iCandidateAssistant].numberOfCandidate++;
-        candidates[iCandidateAssistant].listOfCandidateAddress[
-            _adr
-        ] = candidates[iCandidateAssistant].numberOfCandidate;
-        candidatesList[iPotentialCandidateListForCurrentGA].totalLength++;
-        candidatesList[iPotentialCandidateListForCurrentGA].revoteOrNot = false;
-        candidatesList[iPotentialCandidateListForCurrentGA].potentialRevote = 0;
+        candidateAssitant.numberOfCandidate++;
+        candidateAssitant.listOfCandidateAddress[_adr] = candidateAssitant
+            .numberOfCandidate;
+        potentialCandidateListForCurrentGA.totalLength++;
+        potentialCandidateListForCurrentGA.revoteOrNot = false;
+        potentialCandidateListForCurrentGA.potentialRevote = 0;
     }
 
     /**
      *Assign all the candidacy proposals that are in the pipeline to the target GA.
+     *@param _proposalID The reference ID of proposals.
      *@param _gaIndex The index of the target GA.
      */
     function setDelegateProposalsToGA(uint256 _gaIndex) public returns (bool) {
@@ -279,12 +277,10 @@ contract GAManager is Ownable {
     }
 
     function voteForDelegate(address _adr) public proposalOnly returns (bool) {
-        candidatesList[iPotentialCandidateListForCurrentGA]
-            .list[
-                candidates[iCandidateAssistant].listOfCandidateAddress[_adr] - 1
-            ]
+        potentialCandidateListForCurrentGA
+            .list[candidateAssitant.listOfCandidateAddress[_adr] - 1]
             .supportingVoteNum++;
-        candidatesList[iPotentialCandidateListForCurrentGA].participantNum++;
+        potentialCandidateListForCurrentGA.participantNum++;
         return true;
     }
 
@@ -297,38 +293,31 @@ contract GAManager is Ownable {
         public
         returns (bool, bool)
     {
-        candidatesList[iPotentialCandidateListForCurrentGA].findMostVotes();
+        potentialCandidateListForCurrentGA.findMostVotes();
         // Check if the the participant number reaches minimum
         if (
-            candidatesList[iPotentialCandidateListForCurrentGA].participantNum >
-            _minParticipant
+            potentialCandidateListForCurrentGA.participantNum > _minParticipant
         ) {
             if (
-                candidatesList[iPotentialCandidateListForCurrentGA]
+                potentialCandidateListForCurrentGA
                     .list[
-                        candidatesList[iPotentialCandidateListForCurrentGA]
+                        potentialCandidateListForCurrentGA
                             .markedPositionForRevote[0]
                     ]
                     .supportingVoteNum > _minYes
             ) {
-                if (
-                    candidatesList[iPotentialCandidateListForCurrentGA]
-                        .revoteOrNot == false
-                ) {
+                if (potentialCandidateListForCurrentGA.revoteOrNot == false) {
                     // Here shows the final delegate.
                     accessibleGate.setDelegate(
-                        candidatesList[iPotentialCandidateListForCurrentGA]
+                        potentialCandidateListForCurrentGA
                             .list[
-                                candidatesList[
-                                    iPotentialCandidateListForCurrentGA
-                                ].markedPositionForRevote[0]
+                                potentialCandidateListForCurrentGA
+                                    .markedPositionForRevote[0]
                             ]
                             .candidate
                     );
-                    delete (
-                        candidatesList[iPotentialCandidateListForCurrentGA]
-                    );
-                    delete (candidates[iCandidateAssistant]);
+                    delete (potentialCandidateListForCurrentGA);
+                    delete (candidateAssitant);
                     return (true, false);
                 } else {
                     // Enter revoting phase.
@@ -356,60 +345,40 @@ contract GAManager is Ownable {
                     ].currentEndTime.add(VOTINGDURITION_PROPOSAL_GA).add(
                             VOTINGTIMEGAP_BETWEENPROPOSALS_GA
                         );
-
                     // 2. Need to create new proposal list.
-                    candidatesList[iTempList].totalLength = candidatesList[
-                        iPotentialCandidateListForCurrentGA
-                    ].potentialRevote;
 
-                    candidates[iTempCandidateAssistant]
-                        .numberOfCandidate = candidatesList[iTempList]
+                    tempList.totalLength = potentialCandidateListForCurrentGA
+                        .potentialRevote;
+                    tempCandidateAssitant.numberOfCandidate = tempList
                         .totalLength;
                     for (
                         uint256 i = 0;
-                        i <
-                        candidatesList[iPotentialCandidateListForCurrentGA]
-                            .potentialRevote;
+                        i < potentialCandidateListForCurrentGA.potentialRevote;
                         i++
                     ) {
-                        candidatesList[iTempList].list[i] = candidatesList[
-                            iPotentialCandidateListForCurrentGA
-                        ].list[
-                                candidatesList[
-                                    iPotentialCandidateListForCurrentGA
-                                ].markedPositionForRevote[i]
+                        tempList.list[i] = potentialCandidateListForCurrentGA
+                            .list[
+                                potentialCandidateListForCurrentGA
+                                    .markedPositionForRevote[i]
                             ];
-                        candidates[iTempCandidateAssistant]
-                            .listOfCandidateAddress[
-                                candidatesList[iTempList].list[i].candidate
-                            ] = i;
+                        tempCandidateAssitant.listOfCandidateAddress[
+                            tempList.list[i].candidate
+                        ] = i;
                     }
-
-                    delete candidatesList[iPotentialCandidateListForCurrentGA];
-
-                    candidatesList[
-                        iPotentialCandidateListForCurrentGA
-                    ] = candidatesList[iTempList];
-
-                    delete candidates[iCandidateAssistant];
-
-                    candidates[iCandidateAssistant] = candidates[
-                        iTempCandidateAssistant
-                    ];
-
-                    delete (candidatesList[iTempList]);
-                    delete (candidates[iTempCandidateAssistant]);
-
+                    potentialCandidateListForCurrentGA = tempList;
+                    candidateAssitant = tempCandidateAssitant;
+                    delete (tempList);
+                    delete (tempCandidateAssitant);
                     return (true, true);
                 }
             } else {
-                delete (candidates[iCandidateAssistant]);
-                delete (candidatesList[iPotentialCandidateListForCurrentGA]);
+                delete (candidateAssitant);
+                delete (potentialCandidateListForCurrentGA);
                 return (false, false);
             }
         } else {
-            delete (candidates[iCandidateAssistant]);
-            delete (candidatesList[iPotentialCandidateListForCurrentGA]);
+            delete (candidateAssitant);
+            delete (potentialCandidateListForCurrentGA);
             return (false, false);
         }
     }
@@ -562,12 +531,7 @@ contract GAManager is Ownable {
     function canVoteForDelegate(address _candidate) public view returns (bool) {
         GAInfo memory temp = scheduledGA[currentIndex];
         //@TODO If this _candidate is inside the list of candidates.
-
-        if (
-            candidates[iCandidateAssistant].listOfCandidateAddress[
-                _candidate
-            ] != 0
-        ) {
+        if (candidateAssitant.listOfCandidateAddress[_candidate] != 0) {
             return (
                 block.timestamp.isInside(
                     temp.delegateElectionTime,
