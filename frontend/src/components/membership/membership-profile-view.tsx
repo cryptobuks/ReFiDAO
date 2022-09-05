@@ -71,10 +71,10 @@ export default function MembershipProfileView({ nftSlug = '#' }: Props) {
         </div>
         <div className="mt-6 grid grid-cols-2 gap-2.5 xs:mt-8">
           <Button shape="rounded" color="gray" onClick={closeModal}>Decline</Button>
-          <Button shape="rounded" onClick={closeModal} color="info">Whitelist</Button>
+          <Button shape="rounded" onClick={closeModal} color="primary">Whitelist</Button>
         </div>
         <div className="mt-6 grid grid-cols-2 gap-2.5 xs:mt-8">
-          <Button shape="rounded" color="warning" onClick={closeModal}>Pay Membership</Button>
+          <Button shape="rounded" color="success" onClick={closeModal}>Pay Membership</Button>
         </div>
       </div>
     </div>

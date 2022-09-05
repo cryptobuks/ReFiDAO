@@ -86,7 +86,8 @@ export default function TransactionTable() {
       // @ts-ignore
       Cell: ({ cell: { value } }) => (
         <div className="flex items-center justify-end">
-          <Button shape="rounded" size="mini" onClick={() => openModal('MEMBERSHIP_PROFILE_VIEW')} color="info">View</Button>
+          <Button shape="rounded" size="mini" color="primary"
+            onClick={() => openModal('MEMBERSHIP_PROFILE_VIEW')}>View</Button>
         </div>
       ),
       minWidth: 100,
@@ -197,7 +198,7 @@ export default function TransactionTable() {
           <Button 
             shape="rounded"
             onClick={() => openModal('REQUEST_MEMBERSHIP_VIEW')}
-            color="info"
+            color="primary"
           >Request membership</Button>
         </div>
       </div>

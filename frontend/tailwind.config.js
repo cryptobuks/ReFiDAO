@@ -21,7 +21,7 @@ module.exports = {
         brand: 'rgb(var(--color-brand) / <alpha-value>)',
         body: '#fcfcfc',
         dark: '#0D1321',
-        green: '#77A964',
+        blue2: '#3B4590',
         'light-dark': '#171e2e',
         'sidebar-body': '#F8FAFC',
       },

@@ -12,7 +12,7 @@ type ColorNames =
   | 'success'
   | 'info'
   | 'warning'
-  | 'danger';
+  | 'danger'
 type SizeNames = 'large' | 'medium' | 'small' | 'mini';
 
 const shapes: Record<ShapeNames, string[]> = {
@@ -26,10 +26,10 @@ const variants: Record<VariantNames, string[]> = {
   transparent: ['bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800'],
 };
 const colors: Record<ColorNames, string[]> = {
-  primary: ['text-brand', 'bg-brand', 'border-brand'],
+  primary: ['text-blue2', 'bg-blue2', 'border-blue2'],
   white: ['text-gray-900', 'bg-white', 'border-white'],
   gray: ['text-gray-900', 'bg-gray-100', 'border-gray-100'],
-  success: ['text-green-500', 'bg-green-500', 'border-green-500'],
+  success: ['text-green-600', 'bg-green-600', 'border-green-600'],
   info: ['text-blue-500', 'bg-blue-500', 'border-blue-500'],
   warning: ['text-yellow-500', 'bg-yellow-500', 'border-yellow-500'],
   danger: ['text-red-500', 'bg-red-500', 'border-red-500'],
