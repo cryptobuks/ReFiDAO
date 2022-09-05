@@ -55,7 +55,7 @@ export default function RequestMembershipView({ nftSlug = '#' }: Props) {
         </div>
         <div className="mt-6 grid grid-cols-2 gap-2.5 xs:mt-8">
           <Button shape="rounded" color="gray" onClick={closeModal}>Cancel</Button>
-          <Button shape="rounded" onClick={closeModal} color="info">Request</Button>
+          <Button shape="rounded" onClick={closeModal} color="primary">Request</Button>
         </div>
       </div>
     </div>
