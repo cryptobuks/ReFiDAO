@@ -23,64 +23,76 @@ import { Transition } from '@/components/ui/transition';
 import { SearchIcon } from '@/components/icons/search';
 import { useModal } from '@/components/modal-views/context';
 
-const sort = [
-  { id: 1, name: 'Delegate' },
-  { id: 2, name: 'Member' },
-];
-
-const COLUMNS = [
-  {
-    Header: 'ID',
-    accessor: 'id',
-    minWidth: 60,
-    maxWidth: 80,
-  },
-  {
-    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Address</div>,
-    accessor: 'address',
-    // @ts-ignore
-    Cell: ({ cell: { value } }) => (
-      <div className="flex items-center justify-end">
-        <LinkIcon className="h-[18px] w-[18px] ltr:mr-2 rtl:ml-2" /> {value}
-      </div>
-    ),
-    minWidth: 100,
-    maxWidth: 280,
-  },
-  {
-    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Date join</div>,
-    accessor: 'createdAt',
-    // @ts-ignore
-    Cell: ({ cell: { value } }) => (
-      <div className="ltr:text-right rtl:text-left">{value}</div>
-    ),
-    minWidth: 160,
-    maxWidth: 220,
-  },
-  {
-    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Role</div>,
-    accessor: 'role',
-    // @ts-ignore
-    Cell: ({ cell: { value } }) => (
-      <div className="ltr:text-right rtl:text-left">{value}</div>
-    ),
-    minWidth: 80,
-    maxWidth: 120,
-  },
-  {
-    Header: () => <div className="ltr:ml-auto rtl:mr-auto">Status</div>,
-    accessor: 'status',
-    // @ts-ignore
-    Cell: ({ cell: { value } }) => (
-      <div className="ltr:text-right rtl:text-left">{value}</div>
-    ),
-    minWidth: 100,
-    maxWidth: 180,
-  },
-];
-
 export default function TransactionTable() {
   const data = React.useMemo(() => MembershipData, []);
+
+  const sort = [
+    { id: 1, name: 'Delegate' },
+    { id: 2, name: 'Member' },
+  ];
+
+  const COLUMNS = [
+    {
+      Header: 'ID',
+      accessor: 'id',
+      minWidth: 60,
+      maxWidth: 80,
+    },
+    {
+      Header: () => <div className="ltr:ml-auto rtl:mr-auto">Address</div>,
+      accessor: 'address',
+      // @ts-ignore
+      Cell: ({ cell: { value } }) => (
+        <div className="flex items-center justify-end">
+          <LinkIcon className="h-[18px] w-[18px] ltr:mr-2 rtl:ml-2" /> {value}
+        </div>
+      ),
+      minWidth: 100,
+      maxWidth: 280,
+    },
+    {
+      Header: () => <div className="ltr:ml-auto rtl:mr-auto">Date join</div>,
+      accessor: 'createdAt',
+      // @ts-ignore
+      Cell: ({ cell: { value } }) => (
+        <div className="ltr:text-right rtl:text-left">{value}</div>
+      ),
+      minWidth: 160,
+      maxWidth: 220,
+    },
+    {
+      Header: () => <div className="ltr:ml-auto rtl:mr-auto">Role</div>,
+      accessor: 'role',
+      // @ts-ignore
+      Cell: ({ cell: { value } }) => (
+        <div className="ltr:text-right rtl:text-left">{value}</div>
+      ),
+      minWidth: 80,
+      maxWidth: 120,
+    },
+    {
+      Header: () => <div className="ltr:ml-auto rtl:mr-auto">Status</div>,
+      accessor: 'status',
+      // @ts-ignore
+      Cell: ({ cell: { value } }) => (
+        <div className="ltr:text-right rtl:text-left">{value}</div>
+      ),
+      minWidth: 100,
+      maxWidth: 180,
+    },
+    {
+      Header: () => <div className="ltr:ml-auto rtl:mr-auto">Action</div>,
+      accessor: 'address_action',
+      // @ts-ignore
+      Cell: ({ cell: { value } }) => (
+        <div className="flex items-center justify-end">
+          <Button shape="rounded" size="mini" onClick={() => openModal('MEMBERSHIP_PROFILE_VIEW')} color="info">View</Button>
+        </div>
+      ),
+      minWidth: 100,
+      maxWidth: 280,
+    }
+  ];
   const columns = React.useMemo(() => COLUMNS, []);
   const { openModal } = useModal();
 
@@ -184,9 +196,9 @@ export default function TransactionTable() {
           <SortList />
           <Button 
             shape="rounded"
-            onClick={() => openModal('CREATE_VIEW')}
+            onClick={() => openModal('REQUEST_MEMBERSHIP_VIEW')}
             color="info"
-          >CREATE</Button>
+          >Request membership</Button>
         </div>
       </div>
       <div className="-mx-0.5">

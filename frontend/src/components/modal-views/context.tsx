@@ -1,6 +1,6 @@
 import { atom, useAtom } from 'jotai';
 
-export type MODAL_VIEW = 'SEARCH_VIEW' | 'SHARE_VIEW' | 'WALLET_CONNECT_VIEW' | 'CREATE_VIEW';
+export type MODAL_VIEW = 'SEARCH_VIEW' | 'SHARE_VIEW' | 'WALLET_CONNECT_VIEW' | 'REQUEST_MEMBERSHIP_VIEW' | 'MEMBERSHIP_PROFILE_VIEW';
 const modalAtom = atom({ isOpen: false, view: 'SEARCH_VIEW' });
 
 export function useModal() {
