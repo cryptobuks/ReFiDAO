@@ -134,16 +134,6 @@ const ProposalsPage: NextPageWithLayout<
                         Treasury
                       </div>
                     </AnchorLink>
-                    <AnchorLink href="#" onClick={() => goToAbout()}>
-                      <div className="mb-1.5 text-lg font-medium tracking-tighter text-gray-500 dark:text-white">
-                        About
-                      </div>
-                    </AnchorLink>
-                    <AnchorLink href="#" onClick={() => goToSettings()}>
-                      <div className="mb-1.5 text-lg font-medium tracking-tighter text-gray-500 dark:text-white">
-                        Settings
-                      </div>
-                    </AnchorLink>
                   </div>
                 </div>
               </div>
