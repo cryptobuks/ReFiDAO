@@ -10,10 +10,10 @@ import User5 from '@/assets/images/avatar/6.png';
 
 export const authorData = {
   id: 157896,
-  name: 'Gitcoin',
+  name: 'RefiDAO',
   user_name: 'Gitcoin',
   wallet_key:
-    '0x9Af568442868356c7aE834A47614600002545476555555555772d9F5B87e9b',
+    '0x9Af5684428...',
   created_at: 'November 2021',
   cover_image: {
     id: 1,

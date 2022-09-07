@@ -254,34 +254,14 @@ const CreateProposalPage: NextPageWithLayout = () => {
   return (
     <>
       <NextSeo
-        title="Create Proposal"
-        description="RefiDao - React Next Web3 NFT Crypto Dashboard Template"
+        title="About"
+        description="RefiDao - About"
       />
       <section className="mx-auto w-full max-w-[1160px] text-sm sm:pt-10 4xl:py-16">
         <header className="mb-10 flex flex-col gap-4 rounded-lg bg-white p-5 py-6 shadow-card dark:bg-light-dark xs:p-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-start gap-4 xs:gap-3 xl:gap-4">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-dark">
-              <Image alt="Vote Pool" src={votePool} width={32} height={32} />
-            </div>
-            <div>
-              <h2 className="mb-2 text-base font-medium uppercase dark:text-gray-100 xl:text-lg">
-                You have 100 votes
-              </h2>
-              <p className="leading-[1.8] text-gray-600 dark:text-gray-400">
-                You need to have a minimum of 1 RefiDao tokens in order to submit a proposal.<br className="hidden xl:inline-block" />{' '}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://medium.com/pooltogether/governance-101-fca9ab8b8ba2"
-                  className="inline-flex items-center gap-2 text-gray-900 underline transition-opacity duration-200 hover:no-underline hover:opacity-90 dark:text-gray-100"
-                >
-                  Learn more <ExportIcon className="h-auto w-3" />
-                </a>
-              </p>
-            </div>
-          </div>
           <div className="shrink-0">
             <Button
+              size="mini"
               shape="rounded"
               fullWidth={true}
               className="uppercase"
@@ -291,59 +271,39 @@ const CreateProposalPage: NextPageWithLayout = () => {
             </Button>
           </div>
         </header>
-
         <h2 className="mb-5 text-lg font-medium dark:text-gray-100 sm:mb-6 lg:mb-7 xl:text-xl">
-          Create a new proposal
+          About - Strategie(s)
         </h2>
-        <div className="mb-6 rounded-lg bg-white p-5 shadow-card transition-shadow duration-200 hover:shadow-large dark:bg-light-dark xs:p-6 xs:pb-8">
-          <h3 className="mb-2 text-base font-medium dark:text-gray-100 xl:text-lg">
-            Actions
+        <div className="mb-6 rounded-lg border-2 border-gray-300 bg-white p-5 dark:border-gray-500 dark:bg-light-dark xs:py-6 lg:px-8 lg:py-6">
+        <div className="mb-3 flex flex-col gap-3 xs:mb-4 sm:gap-4 md:flex-row md:items-center md:justify-between">
+          <h3 className="flex items-center gap-4 text-base font-semibold dark:text-gray-100">
+            <span className="inline-block rounded-3xl bg-blue2 px-2.5 py-0.5 text-sm font-medium text-white">
+              REFIDAO
+            </span>{' '}
+            erc20-balance-of
           </h3>
-          <p className="mb-5 leading-[1.8] dark:text-gray-300">
-            Enter the on-chain actions this proposal should take. Actions are
-            executed in the order laid out here (ie. Action #1 fires, then
-            Action #2, etc.)
-          </p>
-          <ActionFields />
+          <div className="flex items-center gap-4 text-gray-900 dark:text-gray-100">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://snapshot.org/#/"
+              className="inline-flex items-center gap-2 text-gray-900 transition-opacity duration-200 hover:underline hover:opacity-90 dark:text-gray-100"
+            >
+              Go to Snapshot <ExportIcon className="h-auto w-3" />
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="#"
+              className="inline-flex items-center gap-2 text-gray-900 transition-opacity duration-200 hover:underline hover:opacity-90 dark:text-gray-100"
+            >
+              Learn more <ExportIcon className="h-auto w-3" />
+            </a>
+          </div>
         </div>
-        <div className="mb-6 rounded-lg bg-white p-5 shadow-card transition-shadow duration-200 hover:shadow-large dark:bg-light-dark xs:p-6 xs:pb-8">
-          <h3 className="mb-2 text-base font-medium dark:text-gray-100 xl:text-lg">
-            Title
-          </h3>
-          <p className="mb-5 leading-[1.8] dark:text-gray-300">
-            Your title introduces your proposal to the voters. Make sure it is
-            clear and to the point.
-          </p>
-          <Input placeholder="Enter title of your proposal" />
-        </div>
-        <div className="mb-6 rounded-lg bg-white p-5 shadow-card transition-shadow duration-200 hover:shadow-large dark:bg-light-dark xs:p-6 xs:pb-8">
-          <h3 className="mb-2 text-base font-medium dark:text-gray-100 xl:text-lg">
-            Description
-          </h3>
-          <p className="mb-5 leading-[1.8] dark:text-gray-300">
-            Your description should present in full detail what the actions of
-            the proposal will do. This is where voters will educate themselves
-            on what they are voting on.
-          </p>
-          <Textarea
-            placeholder="Add the proposal details here"
-            inputClassName="md:h-32 xl:h-36"
-          />
-        </div>
-        <div className="mt-6 grid grid-cols-6 gap-3">
-          <Button
-            size="small"
-            shape="rounded"
-            color="gray"
-          >
-            Preview
-          </Button>
-          <Button
-            size="small"
-            shape="rounded"
-          >
-            Continue
-          </Button>
+        <p className="leading-loose text-gray-600 dark:text-gray-400">
+          Gnosis Chain
+        </p>
         </div>
       </section>
     </>
