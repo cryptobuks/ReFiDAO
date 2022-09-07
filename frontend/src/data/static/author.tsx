@@ -1,5 +1,5 @@
 import CoverImage from '@/assets/images/profile-cover.jpg';
-import AuthorImage from '@/assets/images/gitcoin.png';
+import AuthorImage from '@/assets/images/e-swissolar.jpg';
 import { Instagram } from '@/components/icons/brands/instagram';
 import { Twitter } from '@/components/icons/brands/twitter';
 import User1 from '@/assets/images/avatar/4.png';

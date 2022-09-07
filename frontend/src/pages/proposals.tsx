@@ -82,10 +82,10 @@ const ProposalsPage: NextPageWithLayout<
           {/* Left */}
           <div className="rounded-lg border-2 border-gray-200 bg-white p-5 dark:border-gray-200 dark:bg-light-dark">
             <Avatar
-              size="xl"
+              size="lg"
               image={authorData?.avatar?.thumbnail}
               alt="Author"
-              className="z-10 mx-auto dark:border-gray-500 "
+              className="z-10 mx-auto"
             />
             {/* Profile Info */}
             <div className="flex w-full flex-col md:flex-row lg:flex-row mt-4">
