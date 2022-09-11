@@ -18,7 +18,7 @@ export default function VotePoll({ title, accepted, rejected }: VotePollTypes) {
       <h4 className="mb-3 uppercase dark:text-gray-100">{title}</h4>
       <div className="mb-3">
         <svg width="100%" height="8">
-          <rect x="0" y="0" width="100%" height="8" fill="#FA606A" />
+          <rect x="0" y="0" width="100%" height="8" fill="#3B4590" />
           <rect
             x="0"
             y="0"
@@ -37,7 +37,7 @@ export default function VotePoll({ title, accepted, rejected }: VotePollTypes) {
             {accepted?.vote} ({accepted?.percentage}%)
           </p>
         </div>
-        <div className="text-red-500 ltr:text-right rtl:text-left">
+        <div className="text-blue2 ltr:text-right rtl:text-left">
           <h5 className="mb-1 font-medium uppercase sm:mb-2 sm:text-base">
             Rejected
           </h5>

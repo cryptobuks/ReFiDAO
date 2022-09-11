@@ -192,19 +192,9 @@ const ProposalsPage: NextPageWithLayout<
                   </div>
                   {/* Submenu */}
                   <div className="mt-5 text-left">
-                    <AnchorLink href="#" onClick={() => goToProposals()}>
-                      <div className="mb-1.5 text-lg font-medium tracking-tighter text-gray-500 dark:text-white">
-                        Proposals
-                      </div>
-                    </AnchorLink>
                     <AnchorLink href="#" onClick={() => goToCreateProposalPage()}>
                       <div className="mb-1.5 text-lg font-medium tracking-tighter text-gray-500 dark:text-white">
-                        New proposal
-                      </div>
-                    </AnchorLink>
-                    <AnchorLink href="#" onClick={() => goToTreasury()}>
-                      <div className="mb-1.5 text-lg font-medium tracking-tighter text-gray-500 dark:text-white">
-                        Treasury
+                        Make proposal
                       </div>
                     </AnchorLink>
                   </div>

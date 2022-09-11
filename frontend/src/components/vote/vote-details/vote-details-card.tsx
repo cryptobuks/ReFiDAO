@@ -18,7 +18,7 @@ function VoteActionButton() {
       <Button shape="rounded" color="success" className="flex-1 xs:flex-auto">
         Accept
       </Button>
-      <Button shape="rounded" color="danger" className="flex-1 xs:flex-auto">
+      <Button shape="rounded" color="primary" className="flex-1 xs:flex-auto">
         Reject
       </Button>
     </div>
