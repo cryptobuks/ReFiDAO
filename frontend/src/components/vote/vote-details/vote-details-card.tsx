@@ -49,7 +49,7 @@ export default function VoteDetailsCard({ vote }: any) {
             {vote.title}
           </h3>
           <p className="mt-2 text-gray-600 dark:text-gray-400">
-            Proposal #{vote.id}
+            Proposal Extend POOL drip for UNI, COMP ...
           </p>
 
           {/* show only when vote is active */}
@@ -144,29 +144,6 @@ export default function VoteDetailsCard({ vote }: any) {
               accepted={vote?.accepted}
               rejected={vote?.rejected}
             />
-            <VoterTable votes={vote?.votes} />
-            <RevealContent defaultHeight={250}>
-              <h4 className="mb-6 uppercase dark:text-gray-100">Description</h4>
-              <div
-                className="dynamic-html grid gap-2 leading-relaxed text-gray-600 dark:text-gray-400"
-                dangerouslySetInnerHTML={{ __html: vote.description }}
-              />
-            </RevealContent>
-            <RevealContent
-              defaultHeight={320}
-              className="mt-6 border-t border-dashed border-gray-200 pt-6 dark:border-gray-700"
-            >
-              <VoteActions title={'Actions'} action={vote?.action} />
-            </RevealContent>
-            <div className="mt-6 flex items-center justify-center border-t border-dashed border-gray-200 pt-6 dark:border-gray-700">
-              <Button
-                shape="rounded"
-                fullWidth={true}
-                className="sm:w-4/6 md:w-3/6 xl:w-2/6"
-              >
-                Add POOL token to MetaMask
-              </Button>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
