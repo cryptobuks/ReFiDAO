@@ -37,7 +37,7 @@ export default function RevealContent({
       >
         <div ref={revealChildEl}>{children}</div>
       </div>
-      {!showContent && (
+      {/* {!showContent && (
         <div className="before:content-[' '] relative from-white pt-3 before:absolute before:-top-8 before:block before:h-8 before:w-full before:bg-gradient-to-t dark:from-gray-800">
           <Button
             size="mini"
@@ -48,7 +48,9 @@ export default function RevealContent({
             Show More
           </Button>
         </div>
-      )}
+      )} */}
+      <div className=" dark:from-gray-800">
+      </div>
     </div>
   );
 }

@@ -144,6 +144,13 @@ export default function VoteDetailsCard({ vote }: any) {
               accepted={vote?.accepted}
               rejected={vote?.rejected}
             />
+            <RevealContent defaultHeight={250}>
+              <h4 className="mb-6 uppercase dark:text-gray-100">Description</h4>
+              <div
+                className="dynamic-html grid gap-2 leading-relaxed text-gray-600 dark:text-gray-400"
+                dangerouslySetInnerHTML={{ __html: vote.description }}
+              />
+            </RevealContent>
           </motion.div>
         )}
       </AnimatePresence>
