@@ -71,7 +71,8 @@ export const cripticVotes = [
       },
     ],
     description: `
-      <p>Extend POOL drip for UNI, COMP, Dai, USDC, and SUSHI Ethereum pools until the end of October.</p>
+      <p>Extend POOL drip for UNI, COMP, Dai, USDC, </p>
+      <p>and SUSHI Ethereum pools until the end of October.</p>
       <p>Extend prizes and drip for the POOL pool as well.</p>
     `,
     action: [
@@ -187,7 +188,8 @@ export const cripticVotes = [
       },
     ],
     description: `
-      <p>Extend POOL drip for UNI, COMP, Dai, USDC, and SUSHI Ethereum pools until the end of October.</p>
+      <p>Extend POOL drip for UNI, COMP, Dai, USDC, </p>
+      <p>and SUSHI Ethereum pools until the end of October.</p>
       <p>Extend prizes and drip for the POOL pool as well.</p>
     `,
     action: [
@@ -303,7 +305,8 @@ export const cripticVotes = [
       },
     ],
     description: `
-      <p>Extend POOL drip for UNI, COMP, Dai, USDC, and SUSHI Ethereum pools until the end of October.</p>
+      <p>Extend POOL drip for UNI, COMP, Dai, USDC, </p>
+      <p>and SUSHI Ethereum pools until the end of October.</p>
       <p>Extend prizes and drip for the POOL pool as well.</p>
     `,
     action: [
@@ -419,8 +422,10 @@ export const cripticVotes = [
       },
     ],
     description: `
-      <p>Extend POOL drip for UNI, COMP, Dai, USDC, and SUSHI Ethereum pools until the end of October. Extend prizes and drip for the POOL pool as well.</p>
-      `,
+      <p>Extend POOL drip for UNI, COMP, Dai, USDC, </p>
+      <p>and SUSHI Ethereum pools until the end of October.</p>
+      <p>Extend prizes and drip for the POOL pool as well.</p>
+    `,
     action: [
       {
         id: uuidv4(),
@@ -534,7 +539,8 @@ export const cripticVotes = [
       },
     ],
     description: `
-      <p>Extend POOL drip for UNI, COMP, Dai, USDC, and SUSHI Ethereum pools until the end of October.</p>
+      <p>Extend POOL drip for UNI, COMP, Dai, USDC, </p>
+      <p>and SUSHI Ethereum pools until the end of October.</p>
       <p>Extend prizes and drip for the POOL pool as well.</p>
     `,
     action: [
@@ -650,7 +656,8 @@ export const cripticVotes = [
       },
     ],
     description: `
-      <p>Extend POOL drip for UNI, COMP, Dai, USDC, and SUSHI Ethereum pools until the end of October.</p>
+      <p>Extend POOL drip for UNI, COMP, Dai, USDC, </p>
+      <p>and SUSHI Ethereum pools until the end of October.</p>
       <p>Extend prizes and drip for the POOL pool as well.</p>
     `,
     action: [
@@ -766,7 +773,8 @@ export const cripticVotes = [
       },
     ],
     description: `
-      <p>Extend POOL drip for UNI, COMP, Dai, USDC, and SUSHI Ethereum pools until the end of October.</p>
+      <p>Extend POOL drip for UNI, COMP, Dai, USDC, </p>
+      <p>and SUSHI Ethereum pools until the end of October.</p>
       <p>Extend prizes and drip for the POOL pool as well.</p>
     `,
     action: [

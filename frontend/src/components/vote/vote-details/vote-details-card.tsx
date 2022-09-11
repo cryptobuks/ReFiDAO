@@ -48,10 +48,14 @@ export default function VoteDetailsCard({ vote }: any) {
           >
             {vote.title}
           </h3>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
-            Proposal Extend POOL drip for UNI, COMP ...
-          </p>
-
+          <AnimatePresence>
+            <RevealContent defaultHeight={50}>
+              <div
+                className="mt-2 leading-relaxed text-gray-600 dark:text-gray-400"
+                dangerouslySetInnerHTML={{ __html: vote.description }}
+              />
+            </RevealContent>
+          </AnimatePresence>
           {/* show only when vote is active */}
           {vote.status === 'active' && (
             <>
@@ -144,13 +148,6 @@ export default function VoteDetailsCard({ vote }: any) {
               accepted={vote?.accepted}
               rejected={vote?.rejected}
             />
-            <RevealContent defaultHeight={250}>
-              <h4 className="mb-6 uppercase dark:text-gray-100">Description</h4>
-              <div
-                className="dynamic-html grid gap-2 leading-relaxed text-gray-600 dark:text-gray-400"
-                dangerouslySetInnerHTML={{ __html: vote.description }}
-              />
-            </RevealContent>
           </motion.div>
         )}
       </AnimatePresence>
