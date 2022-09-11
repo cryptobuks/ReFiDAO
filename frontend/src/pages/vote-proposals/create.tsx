@@ -296,7 +296,7 @@ const CreateProposalPage: NextPageWithLayout = () => {
         <h2 className="mb-5 text-lg font-medium dark:text-gray-100 sm:mb-6 lg:mb-7 xl:text-xl">
           Create a new proposal
         </h2>
-        <div className="mb-6 rounded-lg bg-white p-5 shadow-card transition-shadow duration-200 hover:shadow-large dark:bg-light-dark xs:p-6 xs:pb-8">
+        {/* <div className="mb-6 rounded-lg bg-white p-5 shadow-card transition-shadow duration-200 hover:shadow-large dark:bg-light-dark xs:p-6 xs:pb-8">
           <h3 className="mb-2 text-base font-medium dark:text-gray-100 xl:text-lg">
             Actions
           </h3>
@@ -306,7 +306,7 @@ const CreateProposalPage: NextPageWithLayout = () => {
             Action #2, etc.)
           </p>
           <ActionFields />
-        </div>
+        </div> */}
         <div className="mb-6 rounded-lg bg-white p-5 shadow-card transition-shadow duration-200 hover:shadow-large dark:bg-light-dark xs:p-6 xs:pb-8">
           <h3 className="mb-2 text-base font-medium dark:text-gray-100 xl:text-lg">
             Title
