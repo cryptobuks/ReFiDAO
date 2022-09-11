@@ -286,6 +286,7 @@ const CreateProposalPage: NextPageWithLayout = () => {
               fullWidth={true}
               className="uppercase"
               onClick={() => goToAllProposalPage()}
+              color="success"
             >
               Back
             </Button>
